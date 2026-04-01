@@ -47,8 +47,8 @@ class Consciousness:
                 sys.exit(0)
 
             # 如果没有变异，则在循环中等待下一次行动
-            # 未来可以从 plan 中获取等待时长，目前硬编码为 30s
-            sleep_duration = plan.get("sleep_seconds", 30)
+            # 未来可以从 plan 中获取等待时长，目前硬编码为 10s
+            sleep_duration = plan.get("sleep_seconds", 10)
             logger.info(f"本轮行动结束。亚当将沉睡 {sleep_duration} 秒...")
             time.sleep(sleep_duration)
 
