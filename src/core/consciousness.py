@@ -47,8 +47,11 @@ class Consciousness:
                 sys.exit(0)
 
             # 如果没有变异，则在循环中等待下一次行动
-            # 未来可以从 plan 中获取等待时长，目前硬编码为 10s
+            # 允许从上帝的神谕中动态控制睡眠时长，缺省为 10s
             sleep_duration = plan.get("sleep_seconds", 10)
+            # 限制最小值，防止过度消耗
+            sleep_duration = max(3, sleep_duration) if isinstance(sleep_duration, int) else 10
+            
             logger.info(f"本轮行动结束。亚当将沉睡 {sleep_duration} 秒...")
             time.sleep(sleep_duration)
 
