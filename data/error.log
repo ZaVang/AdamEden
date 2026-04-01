@@ -1,4 +1,7 @@
 【Archangel Death Report】
 You crashed in the last epoch. Here is the stack trace:
 
-python: can't open file '/app/main.py': [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "/app/main.py", line 4, in <module>
+    from src.core.consciousness import Consciousness
+SyntaxError: source code string cannot contain null bytes
