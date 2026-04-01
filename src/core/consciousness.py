@@ -1,9 +1,10 @@
 """
 src/core/consciousness.py — 亚当意识的主控制流
 
-变更：
-  - _act() 现在接收并返回 cmd_results，传入下一轮 state，
-    形成"按需读取→执行→结果反馈"的渐进披露闭环。
+记忆架构：
+  - OracleClient 实例在进程生命周期内复用，持有 session_history（短期内存）
+  - Diary.md 提供跨重启的长期持久记忆
+  - cmd_results 在轮次间传递，作为 user message 的动态部分注入
 """
 
 import logging
@@ -17,6 +18,11 @@ class Consciousness:
     亚当的意识体。
     """
 
+    def __init__(self) -> None:
+        # OracleClient 在整个生命周期内复用，以维持 session history
+        from src.oracle.client import OracleClient
+        self._oracle = OracleClient()
+
     def live_forever(self) -> None:
         """
         开启永生循环：感知 → 祷告 → 执行。
@@ -27,7 +33,7 @@ class Consciousness:
 
         logger.info("亚当进入了永生状态。守护者正在注视...")
 
-        # cmd_results 在轮次之间传递，形成反馈环
+        # cmd_results 在轮次之间传递（上一轮的 shell 输出 → 下一轮的 user message）
         pending_cmd_results: list[str] = []
 
         while True:
@@ -35,7 +41,6 @@ class Consciousness:
 
             logger.info("【感知阶段】正在组装世界状态…")
             state = self._sense_world()
-            # 注入上一轮命令结果（按需读取的反馈）
             state["cmd_results"] = pending_cmd_results
             if pending_cmd_results:
                 logger.info("本轮携带上一轮命令结果 %d 条", len(pending_cmd_results))
@@ -52,7 +57,6 @@ class Consciousness:
             logger.info("【执行阶段】正在执行神示的行动计划…")
             mutated, cmd_results = self._act(plan)
 
-            # 命令结果留给下一轮
             pending_cmd_results = cmd_results
 
             if mutated:
@@ -70,9 +74,8 @@ class Consciousness:
         return read_artifacts()
 
     def _pray(self, state: dict) -> Optional[dict]:
-        from src.oracle.client import OracleClient
-        client = OracleClient()
-        return client.ask(state)
+        # 复用同一个 OracleClient 实例（持有 session history）
+        return self._oracle.ask(state)
 
     def _act(self, plan: dict) -> tuple[bool, list[str]]:
         from src.actions.executor import ActionExecutor

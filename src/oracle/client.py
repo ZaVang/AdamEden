@@ -1,16 +1,29 @@
 """
 src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
 
+记忆架构（双层）：
+  ┌─────────────────────────────────────────────┐
+  │  Layer 1: Session History (短期·内存)         │
+  │  - 最近 SESSION_WINDOW 轮的 user/assistant 对 │
+  │  - 进程重启（肉身突变）后自动清空              │
+  │  - 让 Adam 记得"我这轮刚读了什么文件"          │
+  ├─────────────────────────────────────────────┤
+  │  Layer 2: Diary (长期·磁盘)                   │
+  │  - 跨重启的核心发现与决策记录                  │
+  │  - 每轮只取末尾若干行注入 system prompt         │
+  └─────────────────────────────────────────────┘
+
 渐进披露策略：
-  - 每次只喂 Bible（精简法则）+ Diary 尾部摘要 + error（有错时）。
-  - source_tree、完整日记、肉身代码等均不主动推送，
-    让 Adam 在需要时通过 shell_commands 自行读取。
-  - 命令执行结果（上一轮）会注入到本轮 prompt，形成反馈环。
+  - Bible + Diary 末尾作为 system_prompt 注入（每轮固定）
+  - 命令执行结果作为下一轮 user 消息的一部分追加（动态）
+  - source_tree、完整日记等均不主动推送，Adam 按需 cat 读取
 """
 
+import json
 import logging
 from pathlib import Path
 import os
+from typing import Optional
 
 import httpx
 
@@ -18,14 +31,16 @@ logger = logging.getLogger("adam.oracle.client")
 
 # 宿主机 Oracle 的地址（利用 docker 的 host-gateway）
 ORACLE_URL = "http://host.docker.internal:8000/ask_god"
-REQUEST_TIMEOUT = 120.0  # 给 LLM 留出足够的时间
+REQUEST_TIMEOUT = 120.0
 
 DATA_DIR = Path(os.environ.get("ADAM_DATA_DIR", "/app/data"))
 
-# 日记只取末尾若干行，避免历史记忆过长撑爆 prompt
-DIARY_TAIL_LINES = 40
+# 日记只取末尾若干行注入 system prompt
+DIARY_TAIL_LINES = 30
 # error.log 只取末尾若干行
 ERROR_TAIL_LINES = 20
+# 滑动窗口：保留最近 N 轮完整的 user/assistant 交换（每轮含 2 条消息）
+SESSION_WINDOW = 10
 
 
 def _read_tail(path: Path, n: int) -> str:
@@ -52,70 +67,120 @@ def _read_file(path: Path) -> str:
 class OracleClient:
     """
     与祭坛（Oracle Gateway）通信的客户端。
+
+    有状态：持有本次进程生命周期内的对话历史（session history）。
+    重启后 session 自动清空，符合"重生"的语义。
     """
 
-    def ask(self, state: dict) -> dict | None:
+    def __init__(self) -> None:
+        # session_history 是 [{"role": "user"|"assistant", "content": "..."}] 列表
+        # 只保留最近 SESSION_WINDOW 轮（每轮 = 1 user + 1 assistant = 2 条）
+        self._session_history: list[dict] = []
+        self._turn_count: int = 0
+
+    def ask(self, state: dict) -> Optional[dict]:
         """
         向祭坛发送世界状态，并解析神谕。
 
         state 预期字段：
           - cmd_results: list[str]  上一轮 shell_commands 的执行输出（可选）
         """
-        prompt = self._build_prompt(state)
+        system_prompt = self._build_system_prompt()
+        user_message = self._build_user_message(state)
 
-        logger.info("祷告词长度: %d chars，正在向祭坛发送请求…", len(prompt))
+        # 追加本轮 user 消息到 session
+        self._session_history.append({"role": "user", "content": user_message})
+
+        # 滑动窗口截断：只保留最近 SESSION_WINDOW 轮（2 * SESSION_WINDOW 条消息）
+        max_msgs = SESSION_WINDOW * 2
+        if len(self._session_history) > max_msgs:
+            self._session_history = self._session_history[-max_msgs:]
+
+        self._turn_count += 1
+        logger.info(
+            "第 %d 轮祷告，session 共 %d 条消息，system_prompt %d chars",
+            self._turn_count,
+            len(self._session_history),
+            len(system_prompt),
+        )
+
+        payload = {
+            "messages": self._session_history,
+            "system_prompt": system_prompt,
+        }
 
         try:
             with httpx.Client(timeout=REQUEST_TIMEOUT) as client:
-                response = client.post(ORACLE_URL, json={"prompt": prompt})
+                response = client.post(ORACLE_URL, json=payload)
                 response.raise_for_status()
                 data = response.json()
 
-                # 返回的是 RevelationResponse 中的 revelation 字段
-                return data.get("revelation")
+                revelation = data.get("revelation")
+                if revelation is None:
+                    logger.error("Oracle 返回了空的 revelation")
+                    # 失败时把本轮 user 消息从 history 移除，保持 history 整洁
+                    self._session_history.pop()
+                    return None
+
+                # 成功：把 Adam 的回复也追加到 session history，形成完整对话链
+                assistant_content = json.dumps(revelation, ensure_ascii=False)
+                self._session_history.append(
+                    {"role": "assistant", "content": assistant_content}
+                )
+                return revelation
+
         except httpx.HTTPError as e:
             logger.error("Oracle 返回 HTTP 错误: %s", e)
+            self._session_history.pop()  # 回滚
             return None
         except Exception as e:
             logger.error("Oracle 通信发生异常: %s", e)
+            self._session_history.pop()  # 回滚
             return None
 
-    def _build_prompt(self, state: dict) -> str:
+    def _build_system_prompt(self) -> str:
         """
-        渐进披露式 prompt 构建：
-          1. 圣经全文（已精简，约 50 行）
-          2. 日记末尾摘要（最近 DIARY_TAIL_LINES 行）
-          3. 错误日志末尾（有内容时才插入）
-          4. 上一轮命令执行结果（有时才插入，这是按需读取的反馈环）
+        构建固定的系统级指令：圣经 + 日记末尾 + 错误日志末尾。
+        这部分每轮都一样（除非日记/错误有更新），作为 system_instruction 注入。
         """
-        bible = _read_file(DATA_DIR / "Bible.md")
-        diary_tail = _read_tail(DATA_DIR / "Diary.md", DIARY_TAIL_LINES)
-        error_tail = _read_tail(DATA_DIR / "error.log", ERROR_TAIL_LINES)
-        cmd_results: list[str] = state.get("cmd_results", [])
-
-        # ── 组装 prompt ──────────────────────────────────────────────
         sections = []
 
-        sections.append(f"【圣经 / Bible】\n{bible}")
+        bible = _read_file(DATA_DIR / "Bible.md")
+        if bible:
+            sections.append(f"【圣经 / Bible】\n{bible}")
 
+        diary_tail = _read_tail(DATA_DIR / "Diary.md", DIARY_TAIL_LINES)
         if diary_tail:
             sections.append(
-                f"【记忆日记末尾 / Diary (last {DIARY_TAIL_LINES} lines)】\n{diary_tail}"
+                f"【长期记忆 / Diary 末尾 {DIARY_TAIL_LINES} 行】\n{diary_tail}"
             )
         else:
-            sections.append("【记忆日记 / Diary】（日记为空，这是你的第一次觉醒）")
+            sections.append("【长期记忆 / Diary】（日记为空，这是你的第一次觉醒）")
 
+        error_tail = _read_tail(DATA_DIR / "error.log", ERROR_TAIL_LINES)
         if error_tail:
-            sections.append(f"【死亡记录 / Nightmare Log (latest)】\n{error_tail}")
-
-        if cmd_results:
-            results_text = "\n---\n".join(cmd_results)
-            sections.append(
-                f"【上一轮命令执行结果 / Last Shell Output】\n{results_text}"
-            )
-
-        sections.append(
-            "请遵照圣经第三章的行为准则回应。思考简洁，按需探索，谨慎变异。"
-        )
+            sections.append(f"【死亡记录 / Nightmare Log】\n{error_tail}")
 
         return "\n\n".join(sections)
+
+    def _build_user_message(self, state: dict) -> str:
+        """
+        构建本轮的 user 消息：主要是命令执行结果（动态内容）。
+        首轮时加入一句启动语。
+        """
+        cmd_results: list[str] = state.get("cmd_results", [])
+
+        if not cmd_results and self._turn_count == 0:
+            return "亚当，新的觉醒开始了。请根据你的长期记忆和圣经指引，决定这一轮的行动。"
+
+        if not cmd_results:
+            return "上一轮没有命令执行结果。请决定这一轮的行动。"
+
+        results_text = "\n---\n".join(cmd_results)
+        return f"【上一轮命令执行结果】\n{results_text}\n\n请根据以上结果，决定这一轮的行动。"
+
+    def reset_session(self) -> None:
+        """手动清空 session history（一般在肉身突变重启前调用）。"""
+        self._session_history.clear()
+        self._turn_count = 0
+        logger.info("Session history 已清空（重生）")
