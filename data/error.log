@@ -1,0 +1,4 @@
+【Archangel Death Report】
+You crashed in the last epoch. Here is the stack trace:
+
+python: can't open file '/app/main.py': [Errno 2] No such file or directory
