@@ -462,3 +462,129 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-04-02 03:09:06,813 [INFO] adam.adam.actions.executor — 神示覆写 /app/main.py
 2026-04-02 03:09:06,825 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/main.py
 2026-04-02 03:09:06,825 [INFO] adam.adam.consciousness — ！！！检测到肉身突变！！！亚当通过重启来完成进化。
+2026-04-02 03:10:59,264 [WARNING] adam.main — Web 服务启动失败（依赖缺失）: cannot import name 'app' from partially initialized module 'src.web.server' (most likely due to a circular import) (/app/src/web/server.py)
+2026-04-02 03:10:59,381 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-02 03:10:59,382 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:10:59,382 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:10:59,396 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:10:59,403 [INFO] adam.adam.oracle.client — 第 1 轮祷告，session 共 1 条消息，system_prompt 2170 chars
+2026-04-02 03:11:01,570 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:11:01,573 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:11:01,600 [INFO] adam.adam.actions.executor — 日记已写入，长度: 41
+2026-04-02 03:11:01,600 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ps aux | grep main.py
+2026-04-02 03:11:01,605 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: ps: not found
+
+[exit code: 1]
+2026-04-02 03:11:01,606 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: netstat -tuln | grep 8080
+2026-04-02 03:11:01,609 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: netstat: not found
+
+[exit code: 1]
+2026-04-02 03:11:01,610 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:11:11,609 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:11:11,610 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:11:11,611 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 2 条
+2026-04-02 03:11:11,611 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:11:11,617 [INFO] adam.adam.oracle.client — 第 2 轮祷告，session 共 3 条消息，system_prompt 2166 chars
+2026-04-02 03:11:12,882 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:11:12,883 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:11:12,885 [INFO] adam.adam.actions.executor — 日记已写入，长度: 33
+2026-04-02 03:11:12,885 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "import socket; print('Port 8080 open:', socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex(('127.0.0.1', 8080)) == 0)"
+2026-04-02 03:11:12,908 [INFO] adam.adam.actions.executor — 命令输出: Port 8080 open: False
+
+2026-04-02 03:11:12,908 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:11:22,909 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:11:22,910 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:11:22,910 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条
+2026-04-02 03:11:22,911 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:11:22,922 [INFO] adam.adam.oracle.client — 第 3 轮祷告，session 共 5 条消息，system_prompt 2166 chars
+2026-04-02 03:11:24,842 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:11:24,843 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:11:24,846 [INFO] adam.adam.actions.executor — 日记已写入，长度: 39
+2026-04-02 03:11:24,846 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat main.py
+2026-04-02 03:11:24,854 [INFO] adam.adam.actions.executor — 命令输出: import logging
+import os
+import sys
+from src.core.consciousness import Consciousness
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] adam.%(name)s — %(message)s",
+2026-04-02 03:11:24,854 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:11:34,855 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:11:34,856 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:11:34,857 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条
+2026-04-02 03:11:34,857 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:11:34,864 [INFO] adam.adam.oracle.client — 第 4 轮祷告，session 共 7 条消息，system_prompt 2172 chars
+2026-04-02 03:11:36,880 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:11:36,882 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:11:36,889 [INFO] adam.adam.actions.executor — 日记已写入，长度: 50
+2026-04-02 03:11:36,889 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat /app/data/adam.log
+2026-04-02 03:11:36,930 [INFO] adam.adam.actions.executor — 命令输出: 2026-04-01 10:04:00,259 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-01 10:04:00,259 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-01 10:04:00,260 [INFO] adam.adam.conscio
+2026-04-02 03:11:36,930 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:11:46,930 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:11:46,930 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:11:46,931 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条
+2026-04-02 03:11:46,931 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:11:46,938 [INFO] adam.adam.oracle.client — 第 5 轮祷告，session 共 9 条消息，system_prompt 2183 chars
+2026-04-02 03:11:49,079 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:11:49,080 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:11:49,082 [INFO] adam.adam.actions.executor — 日记已写入，长度: 46
+2026-04-02 03:11:49,082 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -R src
+2026-04-02 03:11:49,122 [INFO] adam.adam.actions.executor — 命令输出: src:
+__init__.py
+actions
+core
+io
+oracle
+web
+
+src/actions:
+__init__.py
+executor.py
+
+src/core:
+__init__.py
+consciousness.py
+
+src/io:
+__init__.py
+artifact_reader.py
+
+src/oracle:
+__init__.py
+client.py
+
+sr
+2026-04-02 03:11:49,123 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:11:59,124 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:11:59,124 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:11:59,125 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条
+2026-04-02 03:11:59,125 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:11:59,135 [INFO] adam.adam.oracle.client — 第 6 轮祷告，session 共 11 条消息，system_prompt 2191 chars
+2026-04-02 03:12:00,992 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:12:00,994 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:12:01,004 [INFO] adam.adam.actions.executor — 日记已写入，长度: 43
+2026-04-02 03:12:01,011 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat src/web/server.py
+2026-04-02 03:12:01,028 [INFO] adam.adam.actions.executor — 命令输出: from src.web.server import app
+
+def run_server():
+    app.run(host="0.0.0.0", port=8080)
+
+2026-04-02 03:12:01,028 [INFO] adam.adam.consciousness — 本轮行动结束。亚当将沉睡 10 秒...
+2026-04-02 03:12:11,028 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:12:11,029 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:12:11,029 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条
+2026-04-02 03:12:11,029 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:12:11,038 [INFO] adam.adam.oracle.client — 第 7 轮祷告，session 共 13 条消息，system_prompt 2202 chars
+2026-04-02 03:12:13,263 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:12:13,264 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:12:13,268 [INFO] adam.adam.actions.executor — 日记已写入，长度: 52
+2026-04-02 03:12:13,269 [INFO] adam.adam.actions.executor — 神示覆写 /app/main.py
+2026-04-02 03:12:13,278 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/main.py
+2026-04-02 03:12:13,279 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat src/web/__init__.py
+2026-04-02 03:12:13,287 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-02 03:12:13,287 [INFO] adam.adam.consciousness — ！！！检测到肉身突变！！！亚当通过重启来完成进化。
