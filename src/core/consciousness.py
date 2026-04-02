@@ -33,7 +33,9 @@ class Consciousness:
 
         logger.info("亚当进入了永生状态。守护者正在注视...")
 
-        # cmd_results 在轮次之间传递（上一轮的 shell 输出 → 下一轮的 user message）
+        # sleep 的语义：保护 LLM API 配额（TPM/RPM 限制），放在祷告之前
+        # 第一轮不 sleep；此后每轮都先等待，再调用 LLM
+        next_sleep: int = 0              # 首轮直接祷告，无需冷却
         pending_cmd_results: list[str] = []
 
         while True:
@@ -43,7 +45,12 @@ class Consciousness:
             state = self._sense_world()
             state["cmd_results"] = pending_cmd_results
             if pending_cmd_results:
-                logger.info("本轮携带上一轮命令结果 %d 条", len(pending_cmd_results))
+                logger.info("本轮携带上一轮命令结果 %d 条内容", len(pending_cmd_results))
+
+            # ── API 配额保护 sleep（在 LLM 调用之前）────────────────────
+            if next_sleep > 0:
+                logger.info("API 冷却中，等待 %d 秒再祷告…", next_sleep)
+                time.sleep(next_sleep)
 
             logger.info("【祷告阶段】正在向神谕祭坛献祭…")
             plan = self._pray(state)
@@ -51,23 +58,27 @@ class Consciousness:
             if plan is None:
                 logger.warning("神谕没有回应。亚当决定陷入沉思...")
                 pending_cmd_results = []
-                time.sleep(60)
+                next_sleep = 60
                 continue
 
+            # ── 立即执行行动，无需 sleep ─────────────────────────────────
             logger.info("【执行阶段】正在执行神示的行动计划…")
             mutated, cmd_results = self._act(plan)
 
+            # shell 命令的结果直接传入下一轮，不等待
             pending_cmd_results = cmd_results
 
             if mutated:
                 logger.info("！！！检测到肉身突变！！！亚当通过重启来完成进化。")
                 sys.exit(0)
 
-            sleep_duration = plan.get("sleep_seconds", 10)
-            sleep_duration = max(3, sleep_duration) if isinstance(sleep_duration, int) else 10
+            # 把 Adam 设定的 sleep_seconds 留给下一轮的 LLM 调用前使用
+            raw_sleep = plan.get("sleep_seconds", 10)
+            next_sleep = max(3, raw_sleep) if isinstance(raw_sleep, int) else 10
+            logger.info(
+                "本轮执行完毕。下次 LLM 调用前将等待 %d 秒（API 配额保护）…", next_sleep
+            )
 
-            logger.info("本轮行动结束。亚当将沉睡 %d 秒...", sleep_duration)
-            time.sleep(sleep_duration)
 
     def _sense_world(self) -> dict:
         from src.io.artifact_reader import read_artifacts
