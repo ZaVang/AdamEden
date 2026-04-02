@@ -59,12 +59,13 @@
 
 - `shell_commands`：执行完立刻传入下一轮，不需要等待。
 
-  **⚠️ 安装新包时的强制顺序（违反此顺序重启后代码无法运行）：**
+  **📌 编写复杂代码的进阶技巧：**
+  如果你发现 `echo` 或 Shell 转义让你崩溃（比如引号冲突），尝试在终端执行 `python3` 来写文件：
+  ```bash
+  python3 -c "with open('target.py', 'w') as f: f.write('''你的多行代码...''')"
   ```
-  步骤1: echo "flask>=3.0" >> /app/requirements.txt   ← 先写进 requirements.txt 持久化
-  步骤2: pip install flask -i https://pypi.tuna.tsinghua.edu.cn/simple  ← 安装到当前环境
-  步骤3: [下一轮确认 pip list 有 flask 后] → 再写 new_code
-  ```
+  使用 Python 的三引号 (`'''` 或 `"""`) 可以极大地降低转义难度。
+
   **只用 `pip install` 不更新 `requirements.txt`，重启后包消失，代码崩溃。**
 
 - `diary_entry`：只在重大决策时写。不要记"我读了X文件"。
