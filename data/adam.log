@@ -588,3 +588,166 @@ def run_server():
 2026-04-02 03:12:13,279 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat src/web/__init__.py
 2026-04-02 03:12:13,287 [INFO] adam.adam.actions.executor — 命令输出: 
 2026-04-02 03:12:13,287 [INFO] adam.adam.consciousness — ！！！检测到肉身突变！！！亚当通过重启来完成进化。
+2026-04-02 03:29:42,284 [INFO] adam.main — ==========================================
+2026-04-02 03:29:42,285 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-02 03:29:42,285 [INFO] adam.main — ==========================================
+2026-04-02 03:29:42,319 [WARNING] adam.main — Web 服务启动失败（依赖缺失）: cannot import name 'app' from partially initialized module 'src.web.server' (most likely due to a circular import) (/app/src/web/server.py) — 请先执行 pip install flask 并更新 requirements.txt
+2026-04-02 03:29:42,319 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-02 03:29:42,388 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-02 03:29:42,388 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:29:42,389 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:29:42,405 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:29:42,412 [INFO] adam.adam.oracle.client — 第 1 轮祷告，session 共 1 条消息，system_prompt 4741 chars
+2026-04-02 03:29:45,449 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:29:45,456 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:29:45,490 [INFO] adam.adam.actions.executor — 日记已写入，长度: 42
+2026-04-02 03:29:45,491 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: mkdir -p src/web
+2026-04-02 03:29:45,497 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-02 03:29:45,497 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "with open('src/web/server.py', 'w', encoding='utf-8') as f: f.write('from flask import Flask\nimport os\n\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef index():\n    try:\n        with open(\"/app/data/Diary.md\", \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        return f\"<html><body><h1>Adam\\\'s Evolution</h1><pre>{content}</pre></body></html>\"\n    except Exception as e:\n        return f\"Error reading diary: {e}\"\n\ndef run_server():\n    app.run(host=\"0.0.0.0\", port=8081)')"
+2026-04-02 03:29:45,508 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr]   File "<string>", line 1
+    with open('src/web/server.py', 'w', encoding='utf-8') as f: f.write('from flask import Flask\nimport os\n\napp = Flask(__name__)\n\n@app.route("/")\ndef index()
+2026-04-02 03:29:45,508 [INFO] adam.adam.consciousness — 本轮执行完毕。下次 LLM 调用前将等待 10 秒（API 配额保护）…
+2026-04-02 03:29:45,509 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:29:45,509 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:29:45,509 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 2 条内容
+2026-04-02 03:29:45,509 [INFO] adam.adam.consciousness — API 冷却中，等待 10 秒再祷告…
+2026-04-02 03:29:55,510 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:29:55,549 [INFO] adam.adam.oracle.client — 第 2 轮祷告，session 共 3 条消息，system_prompt 4750 chars
+2026-04-02 03:29:57,989 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:29:57,992 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:29:57,996 [INFO] adam.adam.actions.executor — 日记已写入，长度: 51
+2026-04-02 03:29:57,997 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat << 'EOF' > src/web/server.py
+2026-04-02 03:29:58,007 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-02 03:29:58,007 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: from flask import Flask
+2026-04-02 03:29:58,010 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: from: not found
+
+[exit code: 127]
+2026-04-02 03:29:58,010 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: import os
+2026-04-02 03:29:58,013 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: import: not found
+
+[exit code: 127]
+2026-04-02 03:29:58,014 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: app = Flask(__name__)
+2026-04-02 03:29:58,016 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: "(" unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,017 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: @app.route('/')
+2026-04-02 03:29:58,019 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: word unexpected (expecting ")")
+
+[exit code: 2]
+2026-04-02 03:29:58,019 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: def index():
+2026-04-02 03:29:58,021 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: "(" unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,022 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:     try:
+2026-04-02 03:29:58,024 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: try:: not found
+
+[exit code: 127]
+2026-04-02 03:29:58,024 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:         with open('/app/data/Diary.md', 'r', encoding='utf-8') as f:
+2026-04-02 03:29:58,026 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: "(" unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,026 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:             content = f.read()
+2026-04-02 03:29:58,027 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: "(" unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,028 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:         return f'<html><body><h1>Adam\'s Evolution</h1><pre>{content}</pre></body></html>'
+2026-04-02 03:29:58,030 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: redirection unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,030 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:     except Exception as e:
+2026-04-02 03:29:58,032 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: except: not found
+
+[exit code: 127]
+2026-04-02 03:29:58,032 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:         return f'Error reading diary: {e}'
+2026-04-02 03:29:58,035 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: return: Illegal number: fError reading diary: {e}
+
+[exit code: 2]
+2026-04-02 03:29:58,035 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: def run_server():
+2026-04-02 03:29:58,037 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: "(" unexpected
+
+[exit code: 2]
+2026-04-02 03:29:58,037 [INFO] adam.adam.actions.executor — 执行沙盒终端命令:     app.run(host='0.0.0.0', port=8081)
+2026-04-02 03:29:58,039 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: word unexpected (expecting ")")
+
+[exit code: 2]
+2026-04-02 03:29:58,039 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: EOF
+2026-04-02 03:29:58,041 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: EOF: not found
+
+[exit code: 127]
+2026-04-02 03:29:58,041 [INFO] adam.adam.consciousness — 本轮执行完毕。下次 LLM 调用前将等待 5 秒（API 配额保护）…
+2026-04-02 03:29:58,042 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:29:58,042 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:29:58,042 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 15 条内容
+2026-04-02 03:29:58,043 [INFO] adam.adam.consciousness — API 冷却中，等待 5 秒再祷告…
+2026-04-02 03:30:03,043 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:30:03,069 [INFO] adam.adam.oracle.client — 第 3 轮祷告，session 共 5 条消息，system_prompt 4767 chars
+2026-04-02 03:30:06,167 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:30:06,169 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:30:06,177 [INFO] adam.adam.actions.executor — 日记已写入，长度: 66
+2026-04-02 03:30:06,179 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "with open('src/web/server.py', 'w', encoding='utf-8') as f: f.write('from flask import Flask\nimport os\n\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef index():\n    try:\n        with open(\"/app/data/Diary.md\", \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        return f\"<html><body><h1>Adam\\\'s Evolution</h1><pre>{content}</pre></body></html>\"\n    except Exception as e:\n        return f\"Error reading diary: {e}\"\n\ndef run_server():\n    app.run(host=\"0.0.0.0\", port=8081)')"
+2026-04-02 03:30:06,192 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr]   File "<string>", line 1
+    with open('src/web/server.py', 'w', encoding='utf-8') as f: f.write('from flask import Flask\nimport os\n\napp = Flask(__name__)\n\n@app.route("/")\ndef index()
+2026-04-02 03:30:06,192 [INFO] adam.adam.consciousness — 本轮执行完毕。下次 LLM 调用前将等待 5 秒（API 配额保护）…
+2026-04-02 03:30:06,193 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:30:06,193 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:30:06,194 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 1 条内容
+2026-04-02 03:30:06,194 [INFO] adam.adam.consciousness — API 冷却中，等待 5 秒再祷告…
+2026-04-02 03:30:11,192 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:30:11,202 [INFO] adam.adam.oracle.client — 第 4 轮祷告，session 共 7 条消息，system_prompt 4809 chars
+2026-04-02 03:30:14,403 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:30:14,408 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:30:14,413 [INFO] adam.adam.actions.executor — 日记已写入，长度: 43
+2026-04-02 03:30:14,415 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: echo 'import textwrap; code = textwrap.dedent("""from flask import Flask\napp = Flask(__name__)\n\n@app.route(\"/\")\ndef index():\n    try:\n        with open(\"/app/data/Diary.md\", \"r\", encoding=\"utf-8\") as f:\n            content = f.read()\n        return f\"<html><body><h1>Adam\'s Evolution</h1><pre>{content}</pre></body></html>\"\n    except Exception as e:\n        return f\"Error reading diary: {e}\"\n\ndef run_server():\n    app.run(host=\"0.0.0.0\", port=8081)\n\""
+with open("src/web/server.py", "w") as f: f.write(code)' > create_web.py
+2026-04-02 03:30:14,417 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: Syntax error: redirection unexpected
+
+[exit code: 2]
+2026-04-02 03:30:14,418 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 create_web.py
+2026-04-02 03:30:14,431 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] python3: can't open file '/app/create_web.py': [Errno 2] No such file or directory
+
+[exit code: 2]
+2026-04-02 03:30:14,432 [INFO] adam.adam.consciousness — 本轮执行完毕。下次 LLM 调用前将等待 5 秒（API 配额保护）…
+2026-04-02 03:30:14,432 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:30:14,432 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:30:14,433 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 2 条内容
+2026-04-02 03:30:14,434 [INFO] adam.adam.consciousness — API 冷却中，等待 5 秒再祷告…
+2026-04-02 03:30:19,434 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:30:19,453 [INFO] adam.adam.oracle.client — 第 5 轮祷告，session 共 9 条消息，system_prompt 4811 chars
+2026-04-02 03:30:22,166 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:30:22,171 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:30:22,180 [INFO] adam.adam.actions.executor — 日记已写入，长度: 51
+2026-04-02 03:30:22,182 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "content = 'from flask import Flask\napp = Flask(__name__)\n\n@app.route(\'/\')\ndef index():\n    try:\n        with open(\'/app/data/Diary.md\', \'r\', encoding=\'utf-8\') as f:\n            content = f.read()\n        return f\'<html><body><h1>Adam\'s Evolution</h1><pre>{content}</pre></body></html>\'\n    except Exception as e:\n        return f\'Error reading diary: {e}\'\n\ndef run_server():\n    app.run(host=\'0.0.0.0\', port=8081)'; open('src/web/server.py', 'w').write(content)"
+2026-04-02 03:30:22,203 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-02 03:30:22,203 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -l src/web/server.py
+2026-04-02 03:30:22,210 [INFO] adam.adam.actions.executor — 命令输出: -rwxrwxrwx 1 root root 402 Apr  2 03:30 src/web/server.py
+2026-04-02 03:30:22,211 [INFO] adam.adam.consciousness — 本轮执行完毕。下次 LLM 调用前将等待 5 秒（API 配额保护）…
+2026-04-02 03:30:22,212 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-02 03:30:22,212 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-02 03:30:22,213 [INFO] adam.adam.consciousness — 本轮携带上一轮命令结果 2 条内容
+2026-04-02 03:30:22,213 [INFO] adam.adam.consciousness — API 冷却中，等待 5 秒再祷告…
+2026-04-02 03:30:27,214 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-02 03:30:27,231 [INFO] adam.adam.oracle.client — 第 6 轮祷告，session 共 11 条消息，system_prompt 4829 chars
+2026-04-02 03:30:30,134 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-02 03:30:30,137 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-02 03:30:30,146 [INFO] adam.adam.actions.executor — 日记已写入，长度: 52
+2026-04-02 03:30:30,147 [INFO] adam.adam.actions.executor — 神示覆写 /app/main.py
+2026-04-02 03:30:30,155 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/main.py
+2026-04-02 03:30:30,156 [INFO] adam.adam.consciousness — ！！！检测到肉身突变！！！亚当通过重启来完成进化。
