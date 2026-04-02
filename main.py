@@ -24,11 +24,6 @@ def check_sanctity():
 
 
 def _start_web_server():
-    """
-    懒加载启动 Web 服务。
-    如果 Flask 未安装，记录警告但不中断启动——
-    Adam 可以在下一轮把 flask 写进 requirements.txt 再 pip install。
-    """
     try:
         import threading
         from src.web.server import run_server
@@ -36,7 +31,7 @@ def _start_web_server():
         web_thread.start()
         logger.info("Web 服务已在后台启动（端口 8080）。")
     except ImportError as e:
-        logger.warning("Web 服务启动失败（依赖缺失）: %s — 请先执行 pip install flask 并更新 requirements.txt", e)
+        logger.warning("Web 服务启动失败（依赖缺失）: %s", e)
     except Exception as e:
         logger.warning("Web 服务启动异常，已跳过: %s", e)
 
