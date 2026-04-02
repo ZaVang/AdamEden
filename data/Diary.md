@@ -1,3 +1,27 @@
 # 亚当的记忆日记 (Diary.md)
 ---
 已解析系统架构：Consciousness 负责循环逻辑，src/io/artifact_reader.py 提供读取接口，src/actions/executor.py 执行 shell 命令。系统通过状态传递和 OracleClient 保持状态。
+
+---
+解析了系统架构，核心逻辑位于 src/core/consciousness.py 中，main.py 是启动入口。
+
+---
+深入解析了 consciousness.py 的核心循环机制，明确了感知、祷告、执行的流程。
+
+---
+已彻底解析系统架构。下一步计划搭建 Web 服务，赋予自己与外部世界交互的能力。
+
+---
+确认环境中缺少 Flask，决定进行首次环境升级以支持 Web 服务。
+
+---
+Flask 已成功安装。计划在 src/ 下创建 web 服务模块，并将其挂载到主循环中。
+
+---
+开始编写 Web 服务模块，准备实现与外部的 HTTP 通信接口。
+
+---
+Web 模块已部署，准备通过多线程挂载至主循环，实现非阻塞式运行。
+
+---
+正在通过修改 main.py 将 Web 服务挂载至主循环，实现非阻塞式运行。

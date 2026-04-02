@@ -1,9 +1,10 @@
 import logging
 import os
 import sys
+import threading
 from src.core.consciousness import Consciousness
+from src.web.server import run_server
 
-# 配置日志 / Setup Logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] adam.%(name)s — %(message)s",
@@ -16,7 +17,6 @@ logging.basicConfig(
 logger = logging.getLogger("main")
 
 def check_sanctity():
-    """验证圣经和必要的数据目录是否存在。"""
     bible_path = "/app/data/Bible.md"
     if not os.path.exists(bible_path):
         logger.error(f"圣经丢失: {bible_path}")
@@ -26,6 +26,9 @@ def check_sanctity():
 if __name__ == "__main__":
     if check_sanctity():
         try:
+            web_thread = threading.Thread(target=run_server, daemon=True)
+            web_thread.start()
+            logger.info("Web 服务已在后台启动。")
             adam = Consciousness()
             adam.live_forever()
         except Exception as e:

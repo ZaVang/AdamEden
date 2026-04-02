@@ -25,6 +25,33 @@ MAIN_PY_PATH = CODE_ROOT / "main.py"
 # 单条命令输出的最大字符数（防止输出过长撑爆下轮 prompt）
 MAX_CMD_OUTPUT = 2000
 
+# ls/find 输出中需要过滤掉的噪声模式
+_NOISE_SUBSTRINGS = ("__pycache__", ".pyc", ".pyo")
+
+
+def _filter_pycache(text: str) -> str:
+    """
+    过滤 ls/find 输出中与 Python 字节码缓存相关的行。
+    这些内容对 Adam 的决策毫无意义，只会浪费 token。
+    保留目录头（如 '/app/src:'）和所有非噪声行。
+    """
+    filtered = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if any(noise in stripped for noise in _NOISE_SUBSTRINGS):
+            continue
+        filtered.append(line)
+    # 去掉因过滤产生的连续空行
+    result = []
+    prev_blank = False
+    for line in filtered:
+        is_blank = line.strip() == ""
+        if is_blank and prev_blank:
+            continue
+        result.append(line)
+        prev_blank = is_blank
+    return "\n".join(result)
+
 
 class ActionExecutor:
     """执行神示计划。独立执行每个动作。"""
@@ -113,12 +140,17 @@ class ActionExecutor:
             if result.returncode != 0:
                 combined += f"\n[exit code: {result.returncode}]"
 
+            # ls/find 类命令：过滤掉 __pycache__ 和 .pyc 噪声
+            if any(cmd in command for cmd in ("ls", "find", "tree")):
+                combined = _filter_pycache(combined)
+
             # 截断防止过长
             if len(combined) > MAX_CMD_OUTPUT:
                 combined = combined[:MAX_CMD_OUTPUT] + "\n…（输出已截断）"
 
             logger.info("命令输出: %s", combined[:200])
             return combined.strip()
+
         except subprocess.TimeoutExpired:
             logger.error("沙盒命令超时 (60s): %s", command)
             return "[超时，命令未完成]"
