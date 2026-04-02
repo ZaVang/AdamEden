@@ -82,3 +82,6 @@ Web 服务模块写入失败，Python 转义机制导致语法错误，计划改
 
 ---
 Web 服务逻辑已写入 src/web/server.py，准备将其挂载到 main.py 中正式启动。
+
+---
+修复了 src/web/server.py 中的语法错误，转义了 HTML 字符串中的引号以确保运行稳定性。
