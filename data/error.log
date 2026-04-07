@@ -1,0 +1,14 @@
+【Archangel Death Report】
+You crashed in the last epoch. Here is the stack trace:
+
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+Traceback (most recent call last):
+  File "/app/main.py", line 4, in <module>
+    from src.core.memory import MemoryManager
+  File "/app/src/core/memory.py", line 8
+    conn.execute('INSERT INTO memory (thought, action, result) VALUES (?, ?, ?)\, (thought, action, result))
+                 ^
+SyntaxError: unterminated string literal (detected at line 8)
