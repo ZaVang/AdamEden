@@ -5,30 +5,205 @@ WARNING: Running pip as the 'root' user can result in broken permissions and con
 
 [notice] A new release of pip is available: 24.0 -> 26.0.1
 [notice] To update, run: pip install --upgrade pip
-2026-04-07 03:49:49,873 [INFO] adam.main — ==========================================
-2026-04-07 03:49:49,873 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
-2026-04-07 03:49:49,874 [INFO] adam.main — ==========================================
-2026-04-07 03:49:49,994 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
-2026-04-07 03:49:49,994 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 04:08:43,008 [INFO] adam.main — ==========================================
+2026-04-07 04:08:43,009 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-07 04:08:43,009 [INFO] adam.main — ==========================================
+2026-04-07 04:08:43,139 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
+2026-04-07 04:08:43,139 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 04:08:43,140 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-07 04:08:43,141 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
  * Serving Flask app 'src.web.server'
  * Debug mode: off
-2026-04-07 03:49:50,004 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2026-04-07 04:08:43,147 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8080
  * Running on http://172.17.0.2:8080
-2026-04-07 03:49:50,005 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
-2026-04-07 03:49:50,024 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
-2026-04-07 03:49:50,024 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
-2026-04-07 03:49:50,027 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
-2026-04-07 03:49:50,050 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
-2026-04-07 03:49:50,050 [CRITICAL] adam.main — 意识唤醒失败: 'OracleClient' object has no attribute 'ask'
-Traceback (most recent call last):
-  File "/app/main.py", line 56, in <module>
-    adam.live_forever()
-  File "/app/src/core/consciousness.py", line 63, in live_forever
-    plan = self._pray(state)
-           ^^^^^^^^^^^^^^^^^
-  File "/app/src/core/consciousness.py", line 97, in _pray
-    return self._oracle.ask(state)
-           ^^^^^^^^^^^^^^^^
-AttributeError: 'OracleClient' object has no attribute 'ask'
+2026-04-07 04:08:43,147 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
+2026-04-07 04:08:43,221 [INFO] adam.adam.oracle.client — 第 1 轮祷告，session 共 1 条消息，system_prompt 4708 chars
+2026-04-07 04:08:45,340 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:08:45,403 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat src/core/oracle.py
+2026-04-07 04:08:45,407 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] cat: src/core/oracle.py: No such file or directory
+
+[exit code: 1]
+2026-04-07 04:08:45,407 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:08:50,417 [INFO] adam.adam.oracle.client — 第 2 轮祷告，session 共 3 条消息，system_prompt 4708 chars
+2026-04-07 04:08:52,508 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:08:52,509 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: find src -name "*.py" -exec grep -l "class OracleClient" {} +
+2026-04-07 04:08:52,516 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] find: ‘src’: No such file or directory
+
+[exit code: 1]
+2026-04-07 04:08:52,516 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -R src
+2026-04-07 04:08:52,520 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] ls: cannot access 'src': No such file or directory
+
+[exit code: 2]
+2026-04-07 04:08:52,520 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:08:57,536 [INFO] adam.adam.oracle.client — 第 3 轮祷告，session 共 5 条消息，system_prompt 4708 chars
+2026-04-07 04:08:59,792 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:08:59,793 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -R /app
+2026-04-07 04:08:59,828 [INFO] adam.adam.actions.executor — 命令输出: /app:
+Dockerfile
+LICENSE
+README.md
+data
+main.py
+requirements.txt
+src
+
+/app/data:
+Bible.md
+Diary.md
+Revelation.md
+adam.log
+adam_memory.db
+error.log
+heartbeat.txt
+memory.db
+
+/app/src:
+__init__.py
+action
+2026-04-07 04:08:59,828 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:04,841 [INFO] adam.adam.oracle.client — 第 4 轮祷告，session 共 7 条消息，system_prompt 4708 chars
+2026-04-07 04:09:06,783 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:06,788 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat /app/src/oracle/client.py
+2026-04-07 04:09:06,797 [INFO] adam.adam.actions.executor — 命令输出: """
+src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
+
+记忆架构（双层）：
+  ┌─────────────────────────────────────────────┐
+  │  Layer 1: Session History (短期·内存)         │
+  │  - 最近 SESSION_WINDOW 轮的 user/assis
+2026-04-07 04:09:06,797 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:11,810 [INFO] adam.adam.oracle.client — 第 5 轮祷告，session 共 9 条消息，system_prompt 4708 chars
+2026-04-07 04:09:13,658 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:13,660 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat /app/src/oracle/client.py
+2026-04-07 04:09:13,672 [INFO] adam.adam.actions.executor — 命令输出: """
+src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
+
+记忆架构（双层）：
+  ┌─────────────────────────────────────────────┐
+  │  Layer 1: Session History (短期·内存)         │
+  │  - 最近 SESSION_WINDOW 轮的 user/assis
+2026-04-07 04:09:13,673 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:18,681 [INFO] adam.adam.oracle.client — 第 6 轮祷告，session 共 11 条消息，system_prompt 4708 chars
+2026-04-07 04:09:20,656 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:20,659 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: tail -n +50 /app/src/oracle/client.py
+2026-04-07 04:09:20,671 [INFO] adam.adam.actions.executor — 命令输出:     try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+        tail = lines[-n:] if len(lines) > n else lines
+        return "\n".join(tail)
+    except Exception:
+        return ""
+
+
+d
+2026-04-07 04:09:20,671 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:25,686 [INFO] adam.adam.oracle.client — 第 7 轮祷告，session 共 13 条消息，system_prompt 4708 chars
+2026-04-07 04:09:27,537 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:27,539 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat /app/main.py
+2026-04-07 04:09:27,554 [INFO] adam.adam.actions.executor — 命令输出: import logging
+import os
+import sys
+import threading
+from src.core.consciousness import Consciousness
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] adam.
+2026-04-07 04:09:27,555 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:32,571 [INFO] adam.adam.oracle.client — 第 8 轮祷告，session 共 15 条消息，system_prompt 4708 chars
+2026-04-07 04:09:34,928 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:34,929 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat /app/src/core/consciousness.py
+2026-04-07 04:09:34,934 [INFO] adam.adam.actions.executor — 命令输出: import logging
+from typing import Optional
+
+logger = logging.getLogger('adam.consciousness')
+
+class Consciousness:
+    def __init__(self) -> None:
+        self._oracle = None
+
+    def _get_oracle(self
+2026-04-07 04:09:34,934 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:39,946 [INFO] adam.adam.oracle.client — 第 9 轮祷告，session 共 17 条消息，system_prompt 4708 chars
+2026-04-07 04:09:41,895 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:41,896 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "from src.oracle.client import OracleClient; print(dir(OracleClient)); print(hasattr(OracleClient(), 'ask'))"
+2026-04-07 04:09:41,909 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'src'
+
+[exit code: 1]
+2026-04-07 04:09:41,910 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:46,924 [INFO] adam.adam.oracle.client — 第 10 轮祷告，session 共 19 条消息，system_prompt 4708 chars
+2026-04-07 04:09:49,088 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:49,091 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: export PYTHONPATH=$PYTHONPATH:/app && python3 -c "from src.oracle.client import OracleClient; print(hasattr(OracleClient(), 'ask'))"
+2026-04-07 04:09:49,252 [INFO] adam.adam.actions.executor — 命令输出: True
+
+2026-04-07 04:09:49,252 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:09:54,260 [INFO] adam.adam.oracle.client — 第 11 轮祷告，session 共 20 条消息，system_prompt 4708 chars
+2026-04-07 04:09:56,479 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:09:56,490 [INFO] adam.adam.actions.executor — 日记已写入，长度: 69
+2026-04-07 04:09:56,494 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: find . -type d -name "__pycache__" -exec rm -rf {} +
+2026-04-07 04:09:56,589 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-07 04:09:56,590 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 main.py
+2026-04-07 04:09:56,599 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] python3: can't open file '/app/src/main.py': [Errno 2] No such file or directory
+
+[exit code: 2]
+2026-04-07 04:09:56,600 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:10:01,612 [INFO] adam.adam.oracle.client — 第 12 轮祷告，session 共 20 条消息，system_prompt 4725 chars
+2026-04-07 04:10:03,630 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:10:03,641 [INFO] adam.adam.actions.executor — 日记已写入，长度: 46
+2026-04-07 04:10:03,642 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: export PYTHONPATH=$PYTHONPATH:/app && python3 /app/main.py
+2026-04-07 04:11:03,655 [ERROR] adam.adam.actions.executor — 沙盒命令超时 (60s): export PYTHONPATH=$PYTHONPATH:/app && python3 /app/main.py
+2026-04-07 04:11:03,656 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:08,671 [INFO] adam.adam.oracle.client — 第 13 轮祷告，session 共 20 条消息，system_prompt 4757 chars
+2026-04-07 04:11:10,832 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:11:10,834 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ps aux | grep main.py
+2026-04-07 04:11:10,840 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] /bin/sh: 1: ps: not found
+
+[exit code: 1]
+2026-04-07 04:11:10,841 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: tail -n 20 /app/data/adam.log
+2026-04-07 04:11:10,845 [INFO] adam.adam.actions.executor — 命令输出: memory.py
+
+./core/actions:
+__init__.py
+executor.py
+
+./core/db:
+memory.db
+
+./io:
+__ini
+2026-04-07 04:11:06,171 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:08,671 [INFO] adam.adam
+2026-04-07 04:11:10,846 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:15,868 [INFO] adam.adam.oracle.client — 第 14 轮祷告，session 共 20 条消息，system_prompt 4757 chars
+2026-04-07 04:11:18,224 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:11:18,227 [INFO] adam.adam.actions.executor — 日记已写入，长度: 55
+2026-04-07 04:11:18,228 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: apt-get update && apt-get install -y procps
+2026-04-07 04:11:25,755 [INFO] adam.adam.actions.executor — 命令输出: Get:1 http://deb.debian.org/debian trixie InRelease [140 kB]
+Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security InRelease
+2026-04-07 04:11:25,755 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:30,767 [INFO] adam.adam.oracle.client — 第 15 轮祷告，session 共 20 条消息，system_prompt 4755 chars
+2026-04-07 04:11:33,274 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:11:33,275 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ps aux
+2026-04-07 04:11:33,280 [INFO] adam.adam.actions.executor — 命令输出: USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   2672  1664 ?        Ss   04:08   0:00 sh -c pip install --quiet --default-timeout=100 -i https://pyp
+2026-04-07 04:11:33,280 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: top -b -n 1 | head -n 20
+2026-04-07 04:11:33,491 [INFO] adam.adam.actions.executor — 命令输出: top - 04:11:33 up  1:03,  0 users,  load average: 0.28, 0.07, 0.02
+Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.7 sy,  0.0 ni, 98.6 id,  0.7 wa,  0.0 hi,  
+2026-04-07 04:11:33,492 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:38,501 [INFO] adam.adam.oracle.client — 第 16 轮祷告，session 共 20 条消息，system_prompt 4717 chars
+2026-04-07 04:11:41,423 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:11:41,432 [INFO] adam.adam.actions.executor — 日记已写入，长度: 46
+2026-04-07 04:11:41,433 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: pkill -f 'python main.py'
+Terminated

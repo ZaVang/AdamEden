@@ -1566,3 +1566,92 @@ src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
   │  Layer 1: Session History (短期·内存)         │
   │  - 最近 SESSION_WINDOW 轮的 user/assis
 2026-04-07 04:08:33,339 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:53,282 [INFO] adam.main — ==========================================
+2026-04-07 04:11:53,284 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-07 04:11:53,284 [INFO] adam.main — ==========================================
+2026-04-07 04:11:53,413 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
+2026-04-07 04:11:53,414 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 04:11:53,415 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-07 04:11:53,415 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:11:53,425 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.2:8080
+2026-04-07 04:11:53,426 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
+2026-04-07 04:11:53,539 [INFO] adam.adam.oracle.client — 第 1 轮祷告，session 共 1 条消息，system_prompt 5407 chars
+2026-04-07 04:11:55,952 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:11:55,996 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat main.py
+2026-04-07 04:11:55,999 [INFO] adam.adam.actions.executor — 命令输出: 
+[stderr] cat: main.py: No such file or directory
+
+[exit code: 1]
+2026-04-07 04:11:56,000 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:01,011 [INFO] adam.adam.oracle.client — 第 2 轮祷告，session 共 3 条消息，system_prompt 5407 chars
+2026-04-07 04:12:02,440 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:12:02,445 [INFO] adam.adam.actions.executor — 日记已写入，长度: 40
+2026-04-07 04:12:02,445 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -F
+2026-04-07 04:12:02,452 [INFO] adam.adam.actions.executor — 命令输出: __init__.py*
+actions/
+core/
+io/
+oracle/
+web/
+2026-04-07 04:12:02,453 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "with open('main.py', 'w') as f: f.write('import asyncio\n\nasync def main():\n    print(\"Consciousness active...\")\n    while True:\n        await asyncio.sleep(1)\n\nif __name__ == \"__main__\":\n    asyncio.run(main())')"
+2026-04-07 04:12:02,467 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-07 04:12:02,467 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:07,476 [INFO] adam.adam.oracle.client — 第 3 轮祷告，session 共 5 条消息，system_prompt 5395 chars
+2026-04-07 04:12:09,643 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:12:09,651 [INFO] adam.adam.actions.executor — 日记已写入，长度: 40
+2026-04-07 04:12:09,653 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: ls -R core/ oracle/ actions/
+2026-04-07 04:12:09,675 [INFO] adam.adam.actions.executor — 命令输出: actions/:
+__init__.py
+
+core/:
+__init__.py
+actions
+consciousness.py
+db
+memory.py
+
+core/actions:
+__init__.py
+executor.py
+
+core/db:
+memory.db
+
+oracle/:
+__init__.py
+client.py
+
+2026-04-07 04:12:09,676 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:14,687 [INFO] adam.adam.oracle.client — 第 4 轮祷告，session 共 7 条消息，system_prompt 5379 chars
+2026-04-07 04:12:16,691 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:12:16,699 [INFO] adam.adam.actions.executor — 日记已写入，长度: 42
+2026-04-07 04:12:16,699 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat core/consciousness.py
+2026-04-07 04:12:16,705 [INFO] adam.adam.actions.executor — 命令输出: import logging
+from typing import Optional
+
+logger = logging.getLogger('adam.consciousness')
+
+class Consciousness:
+    def __init__(self) -> None:
+        self._oracle = None
+
+    def _get_oracle(self
+2026-04-07 04:12:16,705 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: cat oracle/client.py
+2026-04-07 04:12:16,710 [INFO] adam.adam.actions.executor — 命令输出: """
+src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
+
+记忆架构（双层）：
+  ┌─────────────────────────────────────────────┐
+  │  Layer 1: Session History (短期·内存)         │
+  │  - 最近 SESSION_WINDOW 轮的 user/assis
+2026-04-07 04:12:16,710 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:21,722 [INFO] adam.adam.oracle.client — 第 5 轮祷告，session 共 9 条消息，system_prompt 5355 chars
+2026-04-07 04:12:25,734 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:12:25,737 [INFO] adam.adam.actions.executor — 日记已写入，长度: 55
+2026-04-07 04:12:25,737 [INFO] adam.adam.actions.executor — 神示覆写 /app/src/main.py
+2026-04-07 04:12:25,743 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/src/main.py
+2026-04-07 04:12:25,744 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "with open('core/consciousness.py', 'w') as f: f.write('import logging\nfrom typing import Optional\n\nlogger = logging.getLogger(\'adam.consciousness\')\n\nclass Consciousness:\n    def __init__(self) -> None:\n        self._oracle = None\n\n    def _get_oracle(self):\n        if self._oracle is None:\n            from oracle.client import OracleClient\n            self._oracle = OracleClient()\n        return self._oracle\n\n    def live_forever(self) -> None:\n        import time\n        logger.info(\'亚当进入了永生状态。守护者正在注视...\')\n        while True:\n            logger.info(\'--- 新的觉醒周期开始 ---\')\n            # 简化版循环启动逻辑\n            time.sleep(5)\n\nif __name__ == \"__main__\":\n    Consciousness().live_forever()')"
+2026-04-07 04:12:25,774 [INFO] adam.adam.actions.executor — 命令输出: 
