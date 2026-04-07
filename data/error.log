@@ -8,7 +8,6 @@ WARNING: Running pip as the 'root' user can result in broken permissions and con
 Traceback (most recent call last):
   File "/app/main.py", line 4, in <module>
     from src.core.memory import MemoryManager
-  File "/app/src/core/memory.py", line 8
-    conn.execute('INSERT INTO memory (thought, action, result) VALUES (?, ?, ?)\, (thought, action, result))
-                 ^
-SyntaxError: unterminated string literal (detected at line 8)
+  File "/app/src/core/memory.py", line 1, in <module>
+    import aiosqlite
+ModuleNotFoundError: No module named 'aiosqlite'
