@@ -1,0 +1,17 @@
+# Handle line endings automatically
+* text=auto eol=lf
+
+# Explicitly declare file types that are always text/binary
+*.py text
+*.md text
+*.txt text
+*.json text
+*.yaml text
+*.yml text
+*.sql text
+*.db binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary

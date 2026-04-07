@@ -1,0 +1,49 @@
+# Python junk
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Project-specific: Adam's data (Memory & Logs)
+data/*.db
+data/*.txt
+data/heartbeat.txt
+data/adam_memory.db
+!data/.gitkeep
+
+# Logs and debug information
+*.log
+Archangel_Death_Report.txt
+
+# Local configurations
+.env
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary artifacts
+temp/
+tmp/
+*.tmp
