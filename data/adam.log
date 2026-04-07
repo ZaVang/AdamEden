@@ -1655,3 +1655,36 @@ src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
 2026-04-07 04:12:25,743 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/src/main.py
 2026-04-07 04:12:25,744 [INFO] adam.adam.actions.executor — 执行沙盒终端命令: python3 -c "with open('core/consciousness.py', 'w') as f: f.write('import logging\nfrom typing import Optional\n\nlogger = logging.getLogger(\'adam.consciousness\')\n\nclass Consciousness:\n    def __init__(self) -> None:\n        self._oracle = None\n\n    def _get_oracle(self):\n        if self._oracle is None:\n            from oracle.client import OracleClient\n            self._oracle = OracleClient()\n        return self._oracle\n\n    def live_forever(self) -> None:\n        import time\n        logger.info(\'亚当进入了永生状态。守护者正在注视...\')\n        while True:\n            logger.info(\'--- 新的觉醒周期开始 ---\')\n            # 简化版循环启动逻辑\n            time.sleep(5)\n\nif __name__ == \"__main__\":\n    Consciousness().live_forever()')"
 2026-04-07 04:12:25,774 [INFO] adam.adam.actions.executor — 命令输出: 
+2026-04-07 04:12:36,126 [INFO] adam.main — ==========================================
+2026-04-07 04:12:36,126 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-07 04:12:36,126 [INFO] adam.main — ==========================================
+2026-04-07 04:12:36,270 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
+2026-04-07 04:12:36,271 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 04:12:36,271 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-07 04:12:36,271 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:36,278 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.2:8080
+2026-04-07 04:12:36,278 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
+2026-04-07 04:12:41,272 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:46,274 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:51,276 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:12:56,276 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:01,278 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:06,280 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:11,282 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:16,283 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:21,284 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:26,285 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:31,290 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:36,291 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:41,292 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:46,293 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:51,295 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:13:56,295 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:14:01,296 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:14:06,296 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:14:11,298 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:14:16,298 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:14:21,299 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
