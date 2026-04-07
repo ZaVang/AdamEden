@@ -94,7 +94,7 @@ class Consciousness:
 
     def _pray(self, state: dict) -> Optional[dict]:
         # 复用同一个 OracleClient 实例（持有 session history）
-        return self._oracle.ask(state)
+        return self._oracle.query(state) if hasattr(self._oracle, "query") else self._oracle.call(state)
 
     def _act(self, plan: dict) -> tuple[bool, list[str]]:
         from src.actions.executor import ActionExecutor
