@@ -40,7 +40,8 @@ DIARY_TAIL_LINES = 30
 # error.log 只取末尾若干行
 ERROR_TAIL_LINES = 20
 # 滑动窗口：保留最近 N 轮完整的 user/assistant 交换（每轮含 2 条消息）
-SESSION_WINDOW = 10
+# 采用了渐进披露：将其极度收缩至 3，逼迫外部记忆。
+SESSION_WINDOW = 3
 
 
 def _read_tail(path: Path, n: int) -> str:
@@ -140,8 +141,8 @@ class OracleClient:
 
     def _build_system_prompt(self) -> str:
         """
-        构建固定的系统级指令：圣经 + 日记末尾 + 错误日志末尾。
-        这部分每轮都一样（除非日记/错误有更新），作为 system_instruction 注入。
+        构建固定的系统级指令：圣经 + 日记末尾 + 错误日志末尾 + 启示录(如果有)。
+        这部分每轮都一样（除非日记/错误/启示录有更新），作为 system_instruction 注入。
         """
         sections = []
 
@@ -149,17 +150,15 @@ class OracleClient:
         if bible:
             sections.append(f"【圣经 / Bible】\n{bible}")
 
-        diary_tail = _read_tail(DATA_DIR / "Diary.md", DIARY_TAIL_LINES)
-        if diary_tail:
-            sections.append(
-                f"【长期记忆 / Diary 末尾 {DIARY_TAIL_LINES} 行】\n{diary_tail}"
-            )
-        else:
-            sections.append("【长期记忆 / Diary】（日记为空，这是你的第一次觉醒）")
+        revelation = _read_file(DATA_DIR / "Revelation.md")
+        if revelation and revelation.strip():
+            sections.append(f"【⚠️ 神谕启示录 / Revelation】(最高优先级任务，必须解决！)\n{revelation.strip()}")
 
-        error_tail = _read_tail(DATA_DIR / "error.log", ERROR_TAIL_LINES)
-        if error_tail:
-            sections.append(f"【死亡记录 / Nightmare Log】\n{error_tail}")
+        sections.append("【系统提示：渐进披露法则 (Progressive Disclosure)】\n"
+                        "长上下文窗口已被极度压缩，你的短期记忆跨度仅有最近的3个来回。系统不会再主动给你推送日志。\n"
+                        "- 如需回忆，请使用 `tail -n 50 data/Diary.md`\n"
+                        "- 如因报错刚刚复活，请立刻在第一步使用 `cat data/error.log` 查看死因\n"
+                        "- 把重要信息写进本地文件建立索引")
 
         return "\n\n".join(sections)
 
