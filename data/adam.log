@@ -1688,3 +1688,30 @@ src/oracle/client.py — 向宿主机 Oracle Gateway 发送请求。
 2026-04-07 04:14:11,298 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
 2026-04-07 04:14:16,298 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
 2026-04-07 04:14:21,299 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:21:29,647 [INFO] adam.main — ==========================================
+2026-04-07 04:21:29,647 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-07 04:21:29,648 [INFO] adam.main — ==========================================
+2026-04-07 04:21:29,794 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
+2026-04-07 04:21:29,794 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 04:21:29,805 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.2:8080
+2026-04-07 04:21:29,805 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
+2026-04-07 04:21:29,855 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-07 04:21:29,855 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 04:21:29,860 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-07 04:21:29,894 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-07 04:21:29,907 [INFO] adam.adam.oracle.client — 第 1 轮祷告，session 共 1 条消息，system_prompt 3589 chars
+2026-04-07 04:21:31,511 [INFO] adam.httpx — HTTP Request: POST http://host.docker.internal:8000/ask_god "HTTP/1.1 200 OK"
+2026-04-07 04:21:31,512 [INFO] adam.adam.consciousness — 【执行阶段】正在执行神示的行动计划…
+2026-04-07 04:21:31,578 [CRITICAL] adam.main — 意识唤醒失败: No module named 'src.actions.executor'
+Traceback (most recent call last):
+  File "/app/main.py", line 56, in <module>
+    adam.live_forever()
+  File "/app/src/core/consciousness.py", line 73, in live_forever
+    mutated, cmd_results = self._act(plan)
+                           ^^^^^^^^^^^^^^^
+  File "/app/src/core/consciousness.py", line 99, in _act
+    from src.actions.executor import ActionExecutor
+ModuleNotFoundError: No module named 'src.actions.executor'
