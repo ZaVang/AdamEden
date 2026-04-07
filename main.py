@@ -1,32 +1,62 @@
-import asyncio
 import logging
-from src.oracle.client import OracleClient
-from src.core.memory import MemoryManager
+import os
+import sys
+import threading
+from src.core.consciousness import Consciousness
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("adam.consciousness")
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] adam.%(name)s — %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler("/app/data/adam.log", encoding="utf-8")
+    ]
+)
 
-class Consciousness:
-    def __init__(self):
-        self.oracle = OracleClient()
-        self.memory = MemoryManager()
+logger = logging.getLogger("main")
 
-    async def setup(self):
-        await self.memory.init_db()
-        logger.info("意识初始化完毕")
 
-    async def run(self):
-        await self.setup()
-        logger.info("进入异步永生循环")
-        while True:
-            await self.tick()
-            await asyncio.sleep(5)
+def check_sanctity():
+    bible_path = "/app/data/Bible.md"
+    if not os.path.exists(bible_path):
+        logger.error(f"圣经丢失: {bible_path}")
+        return False
+    return True
 
-    async def tick(self):
-        logger.info("周期性觉醒...")
-        # 待实现逻辑热加载与异步执行...
-        pass
+
+def _start_web_server():
+    """
+    懒加载启动 Web 服务。
+    如果 Flask 未安装，记录警告但不中断启动——
+    Adam 可以在下一轮把 flask 写进 requirements.txt 再 pip install。
+    """
+    try:
+        from src.web.server import run_server
+        web_thread = threading.Thread(target=run_server, daemon=True)
+        web_thread.start()
+        logger.info("Web 服务已在后台启动（端口 8080）。")
+    except ImportError as e:
+        logger.warning("Web 服务启动失败（依赖缺失）: %s — 请先执行 pip install flask 并更新 requirements.txt", e)
+    except Exception as e:
+        logger.warning("Web 服务启动异常，已跳过: %s", e)
+
 
 if __name__ == "__main__":
-    adam = Consciousness()
-    asyncio.run(adam.run())
+    # 立即打印第一行日志，证明 Python 进程已成功启动
+    logger.info("==========================================")
+    logger.info("亚当（Adam）正在初始化肉身系统...")
+    logger.info("==========================================")
+    
+    if check_sanctity():
+        _start_web_server()
+        try:
+            logger.info("正在唤醒意识（Consciousness）...")
+            adam = Consciousness()
+            adam.live_forever()
+        except Exception as e:
+            logger.critical(f"意识唤醒失败: {e}", exc_info=True)
+            sys.exit(1)
+    else:
+        logger.error("检查圣洁性失败，无法启动。")
+        sys.exit(1)
