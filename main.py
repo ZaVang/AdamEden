@@ -1,9 +1,22 @@
 import logging
 import asyncio
 import sys
+import threading
+import os
 from src.core.consciousness import Consciousness
-from src.core.memory import Memory
-from src.actions.executor import AsyncExecutor
+
+try:
+    from src.core.memory import Memory
+    HAS_MEMORY = True
+except ImportError:
+    HAS_MEMORY = False
+
+try:
+    from src.actions.executor import AsyncExecutor
+    HAS_ASYNC_EXEC = True
+except ImportError:
+    HAS_ASYNC_EXEC = False
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -13,14 +26,28 @@ logging.basicConfig(
 
 logger = logging.getLogger('main')
 
+def run_consciousness():
+    try:
+        adam = Consciousness()
+        adam.live_forever()
+    except Exception as e:
+        logger.critical(f'意识崩溃: {e}', exc_info=True)
+        os._exit(1)
+
 class AdamCore:
     def __init__(self):
-        self.memory = Memory()
-        self.executor = AsyncExecutor()
+        self.memory = Memory() if HAS_MEMORY else None
+        self.executor = AsyncExecutor() if HAS_ASYNC_EXEC else None
         self.running = True
 
     async def main_loop(self):
-        logger.info('亚当异步核心启动...')
+        logger.info('亚当异步核心启动... 正在挂载 Consciousness 主意识流')
+        
+        # 将同步的意识流放在后台线程执行，防止阻塞 asyncio
+        # 使用 os._exit(0) 确保意识流内部的 sys.exit 能杀掉整个进程并触发重启
+        t = threading.Thread(target=run_consciousness, daemon=True)
+        t.start()
+        
         while self.running:
             await asyncio.sleep(1)
 
@@ -29,5 +56,6 @@ if __name__ == '__main__':
     try:
         asyncio.run(core.main_loop())
     except KeyboardInterrupt:
-        core.memory.close()
+        if core.memory:
+            core.memory.close()
         logger.info('亚当已关机。')

@@ -40,6 +40,13 @@ class Consciousness:
 
         while True:
             logger.info("--- 新的觉醒周期开始 ---")
+            
+            # --- 放出活体心跳供大天使监测 ---
+            try:
+                with open("/app/data/heartbeat.txt", "w", encoding="utf-8") as f:
+                    f.write(str(time.time()))
+            except Exception as e:
+                logger.warning(f"写入心跳失败: {e}")
 
             logger.info("【感知阶段】正在组装世界状态…")
             state = self._sense_world()
@@ -70,7 +77,8 @@ class Consciousness:
 
             if mutated:
                 logger.info("！！！检测到肉身突变！！！亚当通过重启来完成进化。")
-                sys.exit(0)
+                import os
+                os._exit(0)
 
             # 把 Adam 设定的 sleep_seconds 留给下一轮的 LLM 调用前使用
             raw_sleep = plan.get("sleep_seconds", 10)
