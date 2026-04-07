@@ -3,6 +3,7 @@ import os
 import sys
 import threading
 from src.core.consciousness import Consciousness
+from src.io.health import check
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,6 +26,8 @@ def _start_web_server():
 
 if __name__ == '__main__':
     logger.info('亚当正在初始化肉身系统...')
+    if check():
+        logger.info('健康检查通过。')
     _start_web_server()
     try:
         adam = Consciousness()
