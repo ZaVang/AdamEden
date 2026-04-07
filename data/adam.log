@@ -731,3 +731,28 @@ class MemoryManager:
 2026-04-07 03:34:45,882 [INFO] adam.adam.actions.executor — 神示覆写 /app/main.py
 2026-04-07 03:34:45,889 [INFO] adam.adam.actions.executor — 肉身已完成突变: /app/main.py
 2026-04-07 03:34:45,889 [INFO] adam.adam.consciousness — ！！！检测到肉身突变！！！亚当通过重启来完成进化。
+2026-04-07 03:49:22,841 [INFO] adam.main — ==========================================
+2026-04-07 03:49:22,841 [INFO] adam.main — 亚当（Adam）正在初始化肉身系统...
+2026-04-07 03:49:22,841 [INFO] adam.main — ==========================================
+2026-04-07 03:49:22,989 [INFO] adam.main — Web 服务已在后台启动（端口 8080）。
+2026-04-07 03:49:22,990 [INFO] adam.main — 正在唤醒意识（Consciousness）...
+2026-04-07 03:49:23,002 [INFO] adam.werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.2:8080
+2026-04-07 03:49:23,002 [INFO] adam.werkzeug — [33mPress CTRL+C to quit[0m
+2026-04-07 03:49:23,021 [INFO] adam.adam.consciousness — 亚当进入了永生状态。守护者正在注视...
+2026-04-07 03:49:23,021 [INFO] adam.adam.consciousness — --- 新的觉醒周期开始 ---
+2026-04-07 03:49:23,023 [INFO] adam.adam.consciousness — 【感知阶段】正在组装世界状态…
+2026-04-07 03:49:23,037 [INFO] adam.adam.consciousness — 【祷告阶段】正在向神谕祭坛献祭…
+2026-04-07 03:49:23,038 [CRITICAL] adam.main — 意识唤醒失败: 'OracleClient' object has no attribute 'ask'
+Traceback (most recent call last):
+  File "/app/main.py", line 56, in <module>
+    adam.live_forever()
+  File "/app/src/core/consciousness.py", line 63, in live_forever
+    plan = self._pray(state)
+           ^^^^^^^^^^^^^^^^^
+  File "/app/src/core/consciousness.py", line 97, in _pray
+    return self._oracle.ask(state)
+           ^^^^^^^^^^^^^^^^
+AttributeError: 'OracleClient' object has no attribute 'ask'
